@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración - Cacao San José</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/colors-corporativos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="images/Logo_Cacao.png" alt="Cacao San José" class="logo-primary">
+                <div class="logo-divider"></div>
+                <img src="images/Casa_franceschi.png" alt="Casa Franceschi" class="logo-primary">
+                <h1>Admin</h1>
+            </div>
+            
+            <div class="user-section">
+                <button class="btn-back" onclick="window.location.href='index.html'">
+                    <i class="fas fa-arrow-left"></i>
+                    Volver al Dashboard
+                </button>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Content -->
+    <main class="main-content admin-content">
+        <div class="container">
+            <div class="admin-header">
+                <h2><i class="fas fa-tools"></i> Panel de Administración</h2>
+                <p>Gestiona opciones, permisos y configuración del sistema</p>
+            </div>
+
+            <!-- Admin Tabs -->
+            <div class="admin-tabs">
+                <button class="tab-btn active" onclick="showTab('options')">
+                    <i class="fas fa-th"></i>
+                    Opciones
+                </button>
+                <button class="tab-btn" onclick="showTab('groups')">
+                    <i class="fas fa-users-cog"></i>
+                    Grupos y Permisos
+                </button>
+                <button class="tab-btn" onclick="showTab('categories')">
+                    <i class="fas fa-folder"></i>
+                    Categorías
+                </button>
+                <button class="tab-btn" onclick="showTab('audit')">
+                    <i class="fas fa-history"></i>
+                    Auditoría
+                </button>
+            </div>
+
+            <!-- Tab Content: Options -->
+            <div id="options-tab" class="tab-content active">
+                <div class="admin-toolbar">
+                    <h3>Gestión de Opciones</h3>
+                    <button class="btn-primary" onclick="openModal('newOption')">
+                        <i class="fas fa-plus"></i>
+                        Nueva Opción
+                    </button>
+                </div>
+
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Orden</th>
+                                <th>Título</th>
+                                <th>Categoría</th>
+                                <th>URL</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="order-badge">1</span></td>
+                                <td>
+                                    <div class="table-cell-with-icon">
+                                        <div class="mini-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                            <i class="fas fa-folder-open"></i>
+                                        </div>
+                                        <strong>Therefore Web</strong>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-sistema">Sistema</span></td>
+                                <td class="table-url">https://therefore.cacaosanjose.com</td>
+                                <td><span class="status-badge active">Activo</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" title="Editar"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon" title="Permisos"><i class="fas fa-lock"></i></button>
+                                        <button class="btn-icon danger" title="Eliminar"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="order-badge">2</span></td>
+                                <td>
+                                    <div class="table-cell-with-icon">
+                                        <div class="mini-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <strong>Correo Corporativo</strong>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-sistema">Sistema</span></td>
+                                <td class="table-url">https://mail.cacaosanjose.com</td>
+                                <td><span class="status-badge active">Activo</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" title="Editar"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon" title="Permisos"><i class="fas fa-lock"></i></button>
+                                        <button class="btn-icon danger" title="Eliminar"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="order-badge">3</span></td>
+                                <td>
+                                    <div class="table-cell-with-icon">
+                                        <div class="mini-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <strong>Dashboard Ejecutivo</strong>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-reportes">Reportes</span></td>
+                                <td class="table-url">https://dashboard.cacaosanjose.com</td>
+                                <td><span class="status-badge inactive">Inactivo</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon" title="Editar"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon" title="Permisos"><i class="fas fa-lock"></i></button>
+                                        <button class="btn-icon danger" title="Eliminar"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab Content: Groups -->
+            <div id="groups-tab" class="tab-content">
+                <div class="admin-toolbar">
+                    <h3>Grupos y Permisos</h3>
+                    <button class="btn-primary" onclick="syncGroups()">
+                        <i class="fas fa-sync"></i>
+                        Sincronizar desde AD
+                    </button>
+                </div>
+
+                <div class="groups-grid">
+                    <div class="group-card">
+                        <div class="group-header">
+                            <div class="group-icon">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <div class="group-info">
+                                <h4>Administradores</h4>
+                                <p class="group-ad-name">AD_ADMINS</p>
+                            </div>
+                        </div>
+                        <div class="group-stats">
+                            <div class="stat">
+                                <span class="stat-label">Usuarios</span>
+                                <span class="stat-value">5</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Permisos</span>
+                                <span class="stat-value">Todo</span>
+                            </div>
+                        </div>
+                        <button class="btn-secondary" onclick="configureGroupPermissions(1, 'Administradores')">
+                            <i class="fas fa-cog"></i>
+                            Configurar Permisos
+                        </button>
+                    </div>
+
+                    <div class="group-card">
+                        <div class="group-header">
+                            <div class="group-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="group-info">
+                                <h4>Usuarios Therefore</h4>
+                                <p class="group-ad-name">AD_THEREFORE_USERS</p>
+                            </div>
+                        </div>
+                        <div class="group-stats">
+                            <div class="stat">
+                                <span class="stat-label">Usuarios</span>
+                                <span class="stat-value">45</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Permisos</span>
+                                <span class="stat-value">8 opciones</span>
+                            </div>
+                        </div>
+                        <button class="btn-secondary" onclick="configureGroupPermissions(2, 'Usuarios Therefore')">
+                            <i class="fas fa-cog"></i>
+                            Configurar Permisos
+                        </button>
+                    </div>
+
+                    <div class="group-card">
+                        <div class="group-header">
+                            <div class="group-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="group-info">
+                                <h4>Recursos Humanos</h4>
+                                <p class="group-ad-name">AD_RRHH</p>
+                            </div>
+                        </div>
+                        <div class="group-stats">
+                            <div class="stat">
+                                <span class="stat-label">Usuarios</span>
+                                <span class="stat-value">12</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Permisos</span>
+                                <span class="stat-value">6 opciones</span>
+                            </div>
+                        </div>
+                        <button class="btn-secondary" onclick="configureGroupPermissions(3, 'Recursos Humanos')">
+                            <i class="fas fa-cog"></i>
+                            Configurar Permisos
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Categories -->
+            <div id="categories-tab" class="tab-content">
+                <div class="admin-toolbar">
+                    <h3>Gestión de Categorías</h3>
+                    <button class="btn-primary" onclick="openModal('newCategory')">
+                        <i class="fas fa-plus"></i>
+                        Nueva Categoría
+                    </button>
+                </div>
+
+                <div class="categories-list">
+                    <div class="category-item">
+                        <div class="category-drag">
+                            <i class="fas fa-grip-vertical"></i>
+                        </div>
+                        <div class="category-icon-preview" style="background: #2C3E50;">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <div class="category-details">
+                            <h4>Sistema</h4>
+                            <p>Aplicaciones principales del sistema</p>
+                        </div>
+                        <div class="category-count">
+                            <span>4 opciones</span>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                            <button class="btn-icon danger"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="category-item">
+                        <div class="category-drag">
+                            <i class="fas fa-grip-vertical"></i>
+                        </div>
+                        <div class="category-icon-preview" style="background: #3498DB;">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="category-details">
+                            <h4>Reportes y Análisis</h4>
+                            <p>Reportes y análisis de información</p>
+                        </div>
+                        <div class="category-count">
+                            <span>3 opciones</span>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                            <button class="btn-icon danger"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="category-item">
+                        <div class="category-drag">
+                            <i class="fas fa-grip-vertical"></i>
+                        </div>
+                        <div class="category-icon-preview" style="background: #27AE60;">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="category-details">
+                            <h4>Recursos Humanos</h4>
+                            <p>Portal de empleados y RRHH</p>
+                        </div>
+                        <div class="category-count">
+                            <span>3 opciones</span>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                            <button class="btn-icon danger"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Audit -->
+            <div id="audit-tab" class="tab-content">
+                <div class="admin-toolbar">
+                    <h3>Registro de Auditoría</h3>
+                    <div class="toolbar-filters">
+                        <input type="date" class="filter-input">
+                        <select class="filter-select">
+                            <option>Todas las acciones</option>
+                            <option>Accesos</option>
+                            <option>Modificaciones</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="audit-timeline">
+                    <div class="audit-item">
+                        <div class="audit-time">10:32 AM</div>
+                        <div class="audit-icon success">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="audit-details">
+                            <h4>Acceso a Therefore Web</h4>
+                            <p>Usuario: juan.perez • IP: 192.168.1.105</p>
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="audit-time">09:45 AM</div>
+                        <div class="audit-icon info">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <div class="audit-details">
+                            <h4>Opción modificada</h4>
+                            <p>Admin modificó "Dashboard Ejecutivo" • Estado: Inactivo</p>
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="audit-time">09:20 AM</div>
+                        <div class="audit-icon success">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="audit-details">
+                            <h4>Inicio de sesión exitoso</h4>
+                            <p>Usuario: maria.lopez • IP: 192.168.1.110</p>
+                        </div>
+                    </div>
+
+                    <div class="audit-item">
+                        <div class="audit-time">08:55 AM</div>
+                        <div class="audit-icon warning">
+                            <i class="fas fa-exclamation"></i>
+                        </div>
+                        <div class="audit-details">
+                            <h4>Intento de acceso denegado</h4>
+                            <p>Usuario: carlos.ramos intentó acceder a "Reportes Financieros"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modales -->
+    
+    <!-- Modal: Nueva/Editar Opción -->
+    <div id="modalOption" class="modal">
+        <div class="modal-overlay" onclick="closeModal('modalOption')"></div>
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="modalOptionTitle">Nueva Opción</h3>
+                <button class="modal-close" onclick="closeModal('modalOption')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formOption" onsubmit="handleSaveOption(event)">
+                    <input type="hidden" id="optionId" value="">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="optionTitle">
+                                <i class="fas fa-heading"></i>
+                                Título *
+                            </label>
+                            <input type="text" id="optionTitle" required placeholder="Ej: Therefore Web">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="optionCategory">
+                                <i class="fas fa-folder"></i>
+                                Categoría
+                            </label>
+                            <select id="optionCategory">
+                                <option value="">Sin categoría</option>
+                                <option value="1">Sistema</option>
+                                <option value="2">Reportes y Análisis</option>
+                                <option value="3">Recursos Humanos</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="optionDescription">
+                            <i class="fas fa-align-left"></i>
+                            Descripción
+                        </label>
+                        <textarea id="optionDescription" rows="3" placeholder="Descripción breve de la aplicación"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="optionUrl">
+                            <i class="fas fa-link"></i>
+                            URL de Destino *
+                        </label>
+                        <input type="url" id="optionUrl" required placeholder="https://ejemplo.com">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="optionIcon">
+                                <i class="fas fa-icons"></i>
+                                Icono (Font Awesome)
+                            </label>
+                            <input type="text" id="optionIcon" placeholder="fas fa-folder-open">
+                            <small class="form-help">
+                                <a href="https://fontawesome.com/icons" target="_blank">Ver iconos disponibles</a>
+                            </small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="optionColor">
+                                <i class="fas fa-palette"></i>
+                                Color de Fondo
+                            </label>
+                            <div class="color-picker-group">
+                                <input type="color" id="optionColor" value="#667eea">
+                                <input type="text" id="optionColorText" value="#667eea" class="color-text">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="optionImage">
+                            <i class="fas fa-image"></i>
+                            Imagen Personalizada (opcional)
+                        </label>
+                        <input type="text" id="optionImage" placeholder="/images/app-icon.png">
+                        <small class="form-help">Si agregas una imagen, se usará en lugar del icono</small>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="optionOrder">
+                                <i class="fas fa-sort-numeric-down"></i>
+                                Orden
+                            </label>
+                            <input type="number" id="optionOrder" value="0" min="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="optionNewWindow" checked>
+                                <span>Abrir en nueva ventana</span>
+                            </label>
+                            
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="optionActive" checked>
+                                <span>Opción activa</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" onclick="closeModal('modalOption')">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i>
+                            Guardar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal: Nueva/Editar Categoría -->
+    <div id="modalCategory" class="modal">
+        <div class="modal-overlay" onclick="closeModal('modalCategory')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalCategoryTitle">Nueva Categoría</h3>
+                <button class="modal-close" onclick="closeModal('modalCategory')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formCategory" onsubmit="handleSaveCategory(event)">
+                    <input type="hidden" id="categoryId" value="">
+                    
+                    <div class="form-group">
+                        <label for="categoryName">
+                            <i class="fas fa-tag"></i>
+                            Nombre *
+                        </label>
+                        <input type="text" id="categoryName" required placeholder="Ej: Sistema">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="categoryDescription">
+                            <i class="fas fa-align-left"></i>
+                            Descripción
+                        </label>
+                        <textarea id="categoryDescription" rows="3" placeholder="Descripción de la categoría"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="categoryIcon">
+                                <i class="fas fa-icons"></i>
+                                Icono
+                            </label>
+                            <input type="text" id="categoryIcon" placeholder="fas fa-cog">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="categoryColor">
+                                <i class="fas fa-palette"></i>
+                                Color
+                            </label>
+                            <div class="color-picker-group">
+                                <input type="color" id="categoryColor" value="#2C3E50">
+                                <input type="text" id="categoryColorText" value="#2C3E50" class="color-text">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="categoryOrder">
+                            <i class="fas fa-sort-numeric-down"></i>
+                            Orden
+                        </label>
+                        <input type="number" id="categoryOrder" value="0" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="categoryActive" checked>
+                            <span>Categoría activa</span>
+                        </label>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" onclick="closeModal('modalCategory')">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i>
+                            Guardar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal: Permisos de Grupo -->
+    <div id="modalPermissions" class="modal">
+        <div class="modal-overlay" onclick="closeModal('modalPermissions')"></div>
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="modalPermissionsTitle">Configurar Permisos</h3>
+                <button class="modal-close" onclick="closeModal('modalPermissions')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="permissions-info">
+                    <div class="group-badge">
+                        <i class="fas fa-users"></i>
+                        <span id="permissionsGroupName">Grupo</span>
+                    </div>
+                    <p>Selecciona las opciones a las que este grupo tendrá acceso</p>
+                </div>
+                
+                <div class="permissions-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="permissionsSearch" placeholder="Buscar opciones...">
+                </div>
+                
+                <form id="formPermissions" onsubmit="handleSavePermissions(event)">
+                    <input type="hidden" id="permissionsGroupId" value="">
+                    
+                    <div class="permissions-list">
+                        <!-- Sistema -->
+                        <div class="permission-category">
+                            <div class="permission-category-header">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" class="category-checkbox" data-category="sistema">
+                                    <span><strong>Sistema</strong></span>
+                                </label>
+                            </div>
+                            <div class="permission-items">
+                                <label class="permission-item">
+                                    <input type="checkbox" name="permission" value="1" data-category="sistema">
+                                    <div class="permission-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                        <i class="fas fa-folder-open"></i>
+                                    </div>
+                                    <div class="permission-details">
+                                        <strong>Therefore Web</strong>
+                                        <span>Sistema de gestión documental</span>
+                                    </div>
+                                </label>
+                                
+                                <label class="permission-item">
+                                    <input type="checkbox" name="permission" value="2" data-category="sistema">
+                                    <div class="permission-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="permission-details">
+                                        <strong>Correo Corporativo</strong>
+                                        <span>Outlook Web Access</span>
+                                    </div>
+                                </label>
+                                
+                                <label class="permission-item">
+                                    <input type="checkbox" name="permission" value="3" data-category="sistema">
+                                    <div class="permission-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <div class="permission-details">
+                                        <strong>Calendario</strong>
+                                        <span>Gestión de eventos y reuniones</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Reportes -->
+                        <div class="permission-category">
+                            <div class="permission-category-header">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" class="category-checkbox" data-category="reportes">
+                                    <span><strong>Reportes y Análisis</strong></span>
+                                </label>
+                            </div>
+                            <div class="permission-items">
+                                <label class="permission-item">
+                                    <input type="checkbox" name="permission" value="4" data-category="reportes">
+                                    <div class="permission-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="permission-details">
+                                        <strong>Dashboard Ejecutivo</strong>
+                                        <span>Indicadores clave de desempeño</span>
+                                    </div>
+                                </label>
+                                
+                                <label class="permission-item">
+                                    <input type="checkbox" name="permission" value="5" data-category="reportes">
+                                    <div class="permission-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                                        <i class="fas fa-file-invoice-dollar"></i>
+                                    </div>
+                                    <div class="permission-details">
+                                        <strong>Reportes Financieros</strong>
+                                        <span>Estados financieros y análisis</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- RRHH -->
+                        <div class="permission-category">
+                            <div class="permission-category-header">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" class="category-checkbox" data-category="rrhh">
+                                    <span><strong>Recursos Humanos</strong></span>
+                                </label>
+                            </div>
+                            <div class="permission-items">
+                                <label class="permission-item">
+                                    <input type="checkbox" name="permission" value="6" data-category="rrhh">
+                                    <div class="permission-icon" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <div class="permission-details">
+                                        <strong>Portal de Empleados</strong>
+                                        <span>Información personal y recibos</span>
+                                    </div>
+                                </label>
+                                
+                                <label class="permission-item">
+                                    <input type="checkbox" name="permission" value="7" data-category="rrhh">
+                                    <div class="permission-icon" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                                        <i class="fas fa-umbrella-beach"></i>
+                                    </div>
+                                    <div class="permission-details">
+                                        <strong>Solicitud de Vacaciones</strong>
+                                        <span>Gestión de ausencias y permisos</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" onclick="closeModal('modalPermissions')">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i>
+                            Guardar Permisos
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal: Confirmación de Eliminación -->
+    <div id="modalConfirm" class="modal">
+        <div class="modal-overlay" onclick="closeModal('modalConfirm')"></div>
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h3 id="modalConfirmTitle">Confirmar Acción</h3>
+                <button class="modal-close" onclick="closeModal('modalConfirm')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="confirm-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <p id="modalConfirmMessage">¿Estás seguro de realizar esta acción?</p>
+                <p class="confirm-warning">Esta acción no se puede deshacer.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('modalConfirm')">
+                    Cancelar
+                </button>
+                <button type="button" class="btn-danger" id="modalConfirmBtn" onclick="confirmAction()">
+                    <i class="fas fa-trash"></i>
+                    Eliminar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

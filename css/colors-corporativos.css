@@ -1,0 +1,343 @@
+/* ========================================
+   Colores Corporativos Casa Franceschi
+   Manual de Marca - Sobrescribe colores
+   ======================================== */
+
+:root {
+    /* Colores del Manual de Marca */
+    --primary-purple: #6F4C5B !important;    /* PANTONE 5195C */
+    --primary-blue: #5D6E7C !important;      /* PANTONE 5275C */
+    --accent-yellow: #E8DD45 !important;     /* PANTONE 379C */
+    --accent-green: #B8D16F !important;      /* PANTONE 7486C */
+    --black: #000000 !important;
+}
+
+/* Actualizar gradientes principales */
+.header {
+    background: linear-gradient(135deg, #6F4C5B 0%, #5D6E7C 100%) !important;
+    padding: 1.25rem 2rem !important;
+}
+
+.login-page {
+    background: linear-gradient(135deg, #6F4C5B 0%, #5D6E7C 50%, #B8D16F 100%) !important;
+}
+
+.login-left {
+    background: linear-gradient(135deg, #6F4C5B 0%, #5D6E7C 100%) !important;
+}
+
+/* Actualizar colores de texto principales */
+.welcome-section h2,
+.category-section h3,
+.quick-access h3,
+.admin-header h2,
+.admin-toolbar h3,
+.login-form-container h2,
+.modal-header h3 {
+    color: #6F4C5B !important;
+}
+
+/* Actualizar bordes y acentos */
+.option-card::before {
+    background: linear-gradient(90deg, #6F4C5B, #E8DD45) !important;
+}
+
+.option-card.featured {
+    background: linear-gradient(135deg, rgba(111,76,91,0.05) 0%, rgba(93,110,124,0.05) 100%) !important;
+    border: 2px solid #6F4C5B !important;
+}
+
+.card-arrow {
+    color: #6F4C5B !important;
+}
+
+.option-card:hover .card-arrow {
+    background: #6F4C5B !important;
+}
+
+/* FAB Button */
+.fab-admin {
+    background: linear-gradient(135deg, #6F4C5B, #5D6E7C) !important;
+}
+
+.fab-admin:hover {
+    box-shadow: 0 12px 40px rgba(111,76,91,0.4) !important;
+}
+
+/* Botones */
+.btn-primary,
+.btn-login {
+    background: linear-gradient(135deg, #6F4C5B, #5D6E7C) !important;
+}
+
+.btn-login:hover {
+    box-shadow: 0 8px 20px rgba(111,76,91,0.3) !important;
+}
+
+/* Tabs */
+.tab-btn.active {
+    color: #6F4C5B !important;
+    border-bottom-color: #6F4C5B !important;
+}
+
+/* Badges y elementos pequeños */
+.order-badge,
+.group-badge {
+    background: #6F4C5B !important;
+}
+
+.stat-value {
+    color: #6F4C5B !important;
+}
+
+/* Hover states */
+.btn-icon:hover,
+.modal-close:hover,
+.btn-secondary:hover {
+    background: #6F4C5B !important;
+}
+
+/* Group icon */
+.group-icon {
+    background: linear-gradient(135deg, #6F4C5B, #5D6E7C) !important;
+}
+
+/* Focus states */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #6F4C5B !important;
+}
+
+/* Links */
+.forgot-link,
+.form-help a,
+.login-links a {
+    color: #6F4C5B !important;
+}
+
+/* Permission items hover */
+.permission-item:hover {
+    border-color: #6F4C5B !important;
+    background: rgba(111,76,91,0.02) !important;
+}
+
+/* Login info */
+.login-info {
+    background: rgba(111,76,91,0.05) !important;
+}
+
+/* ========================================
+   LOGOS EN HEADER - TAMAÑOS MEJORADOS
+   ======================================== */
+
+.header .logo-section {
+    display: flex !important;
+    align-items: center !important;
+    gap: 2rem !important;
+    flex: 0 0 auto !important;
+    background: white !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+}
+
+.header .logo-primary {
+    height: 55px !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+.header .logo-secondary {
+    height: 45px !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+.header .logo-divider {
+    width: 2px !important;
+    height: 45px !important;
+    background: rgba(111,76,91,0.2) !important;
+    flex-shrink: 0 !important;
+}
+
+.header .logo-section h1 {
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+    color: var(--primary-purple) !important;
+    letter-spacing: 0.3px !important;
+}
+
+/* Ajuste para la búsqueda cuando hay logos grandes */
+.search-bar {
+    flex: 1 !important;
+    max-width: 450px !important;
+    margin: 0 2rem !important;
+}
+
+/* ========================================
+   LOGO EN LOGIN - TAMAÑO MEJORADO Y CENTRADO
+   ======================================== */
+
+.login-brand {
+    text-align: center !important;
+}
+
+.login-brand .logo-section {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2rem !important;
+    background: rgb(255, 255, 255) !important;
+    border-radius: 20px !important;
+    padding: 1.5rem 2.5rem !important;
+    backdrop-filter: blur(10px) !important;
+    margin: 0 auto 2rem !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
+}
+
+.login-brand .logo-primary {
+    height: 65px !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+.login-brand .logo-divider {
+    width: 2px !important;
+    height: 50px !important;
+    background: rgba(255,255,255,0.4) !important;
+    flex-shrink: 0 !important;
+}
+
+.logo-large {
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+    border-radius: 0 !important;
+    display: block !important;
+    margin: 0 auto 2rem !important;
+    padding: 0 !important;
+    text-align: center !important;
+}
+
+.logo-large img {
+    max-width: 180px !important;
+    height: auto !important;
+}
+
+.login-brand h1 {
+    font-size: 2.5rem !important;
+    margin-bottom: 0.75rem !important;
+    text-align: center !important;
+}
+
+.tagline {
+    font-size: 1.2rem !important;
+    opacity: 0.95 !important;
+    text-align: center !important;
+}
+
+/* ========================================
+   RESPONSIVE - LOGOS
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .header .logo-section {
+        padding: 0.6rem 1.2rem !important;
+    }
+    
+    .header .logo-primary {
+        height: 48px !important;
+    }
+    
+    .header .logo-secondary {
+        height: 38px !important;
+    }
+    
+    .header .logo-divider {
+        height: 38px !important;
+    }
+    
+    .header .logo-section h1 {
+        font-size: 1rem !important;
+    }
+    
+    .login-brand .logo-primary {
+        height: 55px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .header .logo-section {
+        gap: 1rem !important;
+        padding: 0.5rem 1rem !important;
+    }
+    
+    .header .logo-primary {
+        height: 40px !important;
+    }
+    
+    .header .logo-secondary {
+        height: 32px !important;
+    }
+    
+    .header .logo-divider {
+        height: 32px !important;
+    }
+    
+    .header .logo-section h1 {
+        display: none !important;
+    }
+    
+    .search-bar {
+        margin: 1rem 0 0 !important;
+        order: 3 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .login-brand .logo-section {
+        padding: 1.2rem 2rem !important;
+        gap: 1.5rem !important;
+    }
+    
+    .login-brand .logo-primary {
+        height: 50px !important;
+    }
+    
+    .logo-large img {
+        max-width: 140px !important;
+    }
+    
+    .login-brand h1 {
+        font-size: 2rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .header .logo-secondary {
+        display: none !important;
+    }
+    
+    .header .logo-divider {
+        display: none !important;
+    }
+    
+    .header .logo-section {
+        gap: 0 !important;
+    }
+    
+    .login-brand .logo-section {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        padding: 1.5rem 1.5rem !important;
+    }
+    
+    .login-brand .logo-divider {
+        display: none !important;
+    }
+    
+    .login-brand .logo-primary {
+        height: 55px !important;
+    }
+}

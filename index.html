@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intranet - Cacao San José</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/colors-corporativos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="images/Logo_Cacao.png" alt="Cacao San José" class="logo-primary">
+                <div class="logo-divider"></div>
+                <img src="images/Casa_franceschi.png" alt="Casa Franceschi" class="logo-primary">
+            </div>
+            
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Buscar aplicaciones...">
+            </div>
+            
+            <div class="user-section">
+                <div class="user-info">
+                    <span class="user-name">Juan Pérez</span>
+                    <span class="user-role">Administrador</span>
+                </div>
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <h2>Bienvenido, Juan</h2>
+                <p>Accede rápidamente a tus aplicaciones y recursos</p>
+            </section>
+
+            <!-- Quick Access -->
+            <section class="quick-access">
+                <h3><i class="fas fa-star"></i> Accesos Rápidos</h3>
+                <div class="options-grid quick">
+                    <div class="option-card featured" onclick="openApp('https://therefore.cacaosanjose.com')">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Therefore Web</h4>
+                            <p>Sistema de gestión documental</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sistema Category -->
+            <section class="category-section">
+                <div class="category-header">
+                    <div class="category-title">
+                        <i class="fas fa-cog"></i>
+                        <h3>Sistema</h3>
+                    </div>
+                    <span class="category-count">4 aplicaciones</span>
+                </div>
+                <div class="options-grid" id="sistemaGrid">
+                    <div class="option-card" onclick="openApp('https://therefore.cacaosanjose.com')">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Therefore Web</h4>
+                            <p>Gestión documental empresarial</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="option-card" onclick="openApp('#')">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Correo Corporativo</h4>
+                            <p>Outlook Web Access</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="option-card" onclick="openApp('#')">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Calendario</h4>
+                            <p>Gestión de eventos y reuniones</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="option-card" onclick="openApp('#')">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Portal de Tareas</h4>
+                            <p>Seguimiento de proyectos</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reportes Category -->
+            <section class="category-section">
+                <div class="category-header">
+                    <div class="category-title">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Reportes y Análisis</h3>
+                    </div>
+                    <span class="category-count">3 aplicaciones</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-card" onclick="openApp('#')">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Dashboard Ejecutivo</h4>
+                            <p>Indicadores clave de desempeño</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="option-card" onclick="openApp('#')">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Reportes Financieros</h4>
+                            <p>Estados financieros y análisis</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="option-card" onclick="openApp('#')">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Business Intelligence</h4>
+                            <p>Análisis y visualización de datos</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recursos Category -->
+            <section class="category-section">
+                <div class="category-header">
+                    <div class="category-title">
+                        <i class="fas fa-users"></i>
+                        <h3>Recursos Humanos</h3>
+                    </div>
+                    <span class="category-count">3 aplicaciones</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-card" onclick="openApp('#')">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Portal de Empleados</h4>
+                            <p>Información personal y recibos</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="option-card" onclick="openApp('#')">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                            <i class="fas fa-umbrella-beach"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Solicitud de Vacaciones</h4>
+                            <p>Gestión de ausencias y permisos</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="option-card" onclick="openApp('#')">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>Capacitación</h4>
+                            <p>Cursos y material de formación</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Admin FAB Button -->
+    <button class="fab-admin" onclick="window.location.href='admin.html'" title="Panel de Administración">
+        <i class="fas fa-cog"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Cacao San José - Todos los derechos reservados</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
