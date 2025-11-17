@@ -5,9 +5,9 @@
 // Simulación de datos
 const mockData = {
     user: {
-        name: 'Juan Pérez',
-        role: 'Administrador',
-        groups: ['Administradores', 'Therefore Users']
+        name: 'Ravit Maalik',
+        role: 'Administrator',
+        groups: ['Administrators', 'Therefore Users']
     }
 };
 
@@ -233,20 +233,25 @@ function syncGroups() {
 // Session Check
 // ============================================
 
+function isLoginPage() {
+    return document.body.classList.contains('login-page');
+}
+
 function checkSession() {
-    // Solo en páginas protegidas (no en login)
-    if (window.location.pathname.includes('login.html')) {
+    // Si estoy en la página de login, nunca redirijo
+    if (isLoginPage()) {
         return;
     }
-    
+
     const session = localStorage.getItem('intranet_session') || 
-                   sessionStorage.getItem('intranet_session');
-    
-    if (!session && !window.location.pathname.includes('login.html')) {
+                    sessionStorage.getItem('intranet_session');
+
+    if (!session) {
         // No hay sesión, redirigir a login
-        window.location.href = 'login.html';
+        window.location.href = '/login.html';
     }
 }
+
 
 // ============================================
 // Welcome Message
